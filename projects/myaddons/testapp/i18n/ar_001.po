@@ -1,0 +1,601 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * testapp
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-25 03:01+0000\n"
+"PO-Revision-Date: 2026-07-25 03:01+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.form
+#: model_terms:ir.ui.view,arch_db:testapp.testapp_order_form
+msgid "01"
+msgstr "01"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.form
+msgid "02"
+msgstr "02"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "<strong class=\"d-block border-bottom pb-1 mb-2\">Description</strong>"
+msgstr "<strong class=\"d-block border-bottom pb-1 mb-2\">الوصف</strong>"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "<strong>Attached File/Image:</strong>"
+msgstr "<strong>الملف/الصورة المرفقة:</strong>"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "<strong>Computed Value:</strong>"
+msgstr "<strong>القيمة المحسوبة:</strong>"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "<strong>Date &amp; Time:</strong>"
+msgstr "<strong>التاريخ والوقت:</strong>"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "<strong>Gender Designation:</strong>"
+msgstr "<strong>تحديد الجنس:</strong>"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "<strong>Selection Choice:</strong>"
+msgstr "<strong>خيار الاختيار:</strong>"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "<strong>User Name:</strong>"
+msgstr "<strong>اسم المستخدم:</strong>"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "<strong>Value (Integer):</strong>"
+msgstr "<strong>القيمة (عدد صحيح):</strong>"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "<strong>Value 2 (Float):</strong>"
+msgstr "<strong>القيمة 2 (عدد عشري):</strong>"
+
+#. module: testapp
+#: model:ir.model.fields.selection,name:testapp.selection__testapp_testapp__state__accepted
+#: model_terms:ir.ui.view,arch_db:testapp.form
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "Accepted"
+msgstr "مقبول"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__message_needaction
+msgid "Action Needed"
+msgstr "يتطلب إجراء"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__activity_ids
+msgid "Activities"
+msgstr "الأنشطة"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "تنسيق استثناء النشاط"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__activity_state
+msgid "Activity State"
+msgstr "حالة النشاط"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "أيقونة نوع النشاط"
+
+#. module: testapp
+#: model:res.groups,name:testapp.my_app_category_admin
+msgid "Admin"
+msgstr "مسؤول"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__binary
+msgid "Binary"
+msgstr "ملف ثنائي"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__computed
+msgid "Computed"
+msgstr "محسوب"
+
+#. module: testapp
+#: model:ir.model,name:testapp.model_res_partner
+msgid "Contact"
+msgstr "جهة الاتصال"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order__create_uid
+#: model:ir.model.fields,field_description:testapp.field_my_order_item__create_uid
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order__create_date
+#: model:ir.model.fields,field_description:testapp.field_my_order_item__create_date
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__date
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__description
+msgid "Description"
+msgstr "الوصف"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order__display_name
+#: model:ir.model.fields,field_description:testapp.field_my_order_item__display_name
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "Document:"
+msgstr "المستند:"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "Female"
+msgstr "أنثى"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون (الشركاء)"
+
+#. module: testapp
+#: model:ir.model.fields,help:testapp.field_testapp_testapp__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "أيقونة Font Awesome مثل fa-tasks"
+
+#. module: testapp
+#: model:ir.actions.report,name:testapp.action_report_my_report
+msgid "Get Report"
+msgstr "طباعة التقرير"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__has_message
+msgid "Has Message"
+msgstr "يحتوي على رسالة"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.form
+#: model_terms:ir.ui.view,arch_db:testapp.testapp_order_form
+msgid "Header"
+msgstr "الترويسة"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order__id
+#: model:ir.model.fields,field_description:testapp.field_my_order_item__id
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__activity_exception_icon
+msgid "Icon"
+msgstr "الأيقونة"
+
+#. module: testapp
+#: model:ir.model.fields,help:testapp.field_testapp_testapp__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "أيقونة للإشارة إلى نشاط مستثنى."
+
+#. module: testapp
+#: model:ir.model.fields,help:testapp.field_testapp_testapp__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "إذا كان محددًا، فهناك رسائل جديدة تتطلب انتباهك."
+
+#. module: testapp
+#: model:ir.model.fields,help:testapp.field_testapp_testapp__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "إذا كان محددًا، فهناك خطأ في تسليم بعض الرسائل."
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__message_is_follower
+msgid "Is Follower"
+msgstr "متابع"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__is_gentleman
+msgid "Is Male"
+msgstr "ذكر"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order__item_ids
+msgid "Item"
+msgstr "العنصر"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order_item__item_name
+msgid "Item Name"
+msgstr "اسم العنصر"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order_item__item_price
+msgid "Item Price"
+msgstr "سعر العنصر"
+
+#. module: testapp
+#: model:ir.ui.menu,name:testapp.menu_ms_order_item_list
+msgid "Items"
+msgstr "العناصر"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order____last_update
+#: model:ir.model.fields,field_description:testapp.field_my_order_item____last_update
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order__write_uid
+#: model:ir.model.fields,field_description:testapp.field_my_order_item__write_uid
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order__write_date
+#: model:ir.model.fields,field_description:testapp.field_my_order_item__write_date
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "المرفق الرئيسي"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "Male"
+msgstr "ذكر"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__message_has_error
+msgid "Message Delivery error"
+msgstr "خطأ في تسليم الرسالة"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "الموعد النهائي لنشاطي"
+
+#. module: testapp
+#: model:ir.module.category,name:testapp.my_app_category
+msgid "My Category Settings"
+msgstr "إعدادات فئتي"
+
+#. module: testapp
+#: model:ir.module.category,description:testapp.my_app_category
+msgid "My Category Settings pla pla pla"
+msgstr "وصف إعدادات فئتي"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.contact_new_add_extension
+msgid "My Contact"
+msgstr "جهة الاتصال الخاصة بي"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_res_partner__my_contacts_salas_no
+#: model:ir.model.fields,field_description:testapp.field_res_users__my_contacts_salas_no
+msgid "My Contacts Salas No"
+msgstr "رقم الصالة لجهات الاتصال"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.form
+#: model_terms:ir.ui.view,arch_db:testapp.testapp_order_form
+msgid "My Form"
+msgstr "نموذجي"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.contact_new_add_extension
+#: model_terms:ir.ui.view,arch_db:testapp.contact_new_add_extension_tree
+msgid "My Note"
+msgstr "ملاحظتي"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_res_partner__my_notes
+#: model:ir.model.fields,field_description:testapp.field_res_users__my_notes
+msgid "My Notes"
+msgstr "ملاحظاتي"
+
+#. module: testapp
+#: model:ir.model,name:testapp.model_my_order
+msgid "My Order"
+msgstr "طلبي"
+
+#. module: testapp
+#: model:ir.model,name:testapp.model_my_order_item
+msgid "My Order Line"
+msgstr "بند طلبي"
+
+#. module: testapp
+#: model:ir.ui.menu,name:testapp.menu_ms_oders
+msgid "My Orders"
+msgstr "طلباتي"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order__name
+#: model:ir.model.fields,field_description:testapp.field_my_order_item__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: testapp
+#: model:ir.model.constraint,message:testapp.constraint_testapp_testapp_uniq_name
+msgid "Name Should be Unique"
+msgstr "يجب أن يكون الاسم فريداً"
+
+#. module: testapp
+#: model:ir.model.fields.selection,name:testapp.selection__my_order__state__new
+#: model:ir.model.fields.selection,name:testapp.selection__testapp_testapp__state__new
+#: model_terms:ir.ui.view,arch_db:testapp.form
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "New"
+msgstr "جديد"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "الفعالية التالية في التقويم للنشاط"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "الموعد النهائي للنشاط التالي"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__activity_summary
+msgid "Next Activity Summary"
+msgstr "ملخص النشاط التالي"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__activity_type_id
+msgid "Next Activity Type"
+msgstr "نوع النشاط التالي"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "No file attached"
+msgstr "لا يوجد ملف مرفق"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الأخطاء"
+
+#. module: testapp
+#: model:ir.model.fields,help:testapp.field_testapp_testapp__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "عدد الرسائل التي تتطلب اتخاذ إجراء"
+
+#. module: testapp
+#: model:ir.model.fields,help:testapp.field_testapp_testapp__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل التي بها خطأ في التسليم"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order_item__order_id
+msgid "Order"
+msgstr "الطلب"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order__order_des
+msgid "Order Des"
+msgstr "وصف الطلب"
+
+#. module: testapp
+#: model:ir.actions.act_window,name:testapp.ms_order_item_action_window
+msgid "Order Items"
+msgstr "عناصر الطلب"
+
+#. module: testapp
+#: model:ir.actions.act_window,name:testapp.ms_order_action_window
+#: model:ir.ui.menu,name:testapp.menu_ms_order_list
+msgid "Orders"
+msgstr "الطلبات"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order_item__qty
+msgid "Qty"
+msgstr "الكمية"
+
+#. module: testapp
+#: model:ir.model.fields.selection,name:testapp.selection__my_order__state__ready
+#: model_terms:ir.ui.view,arch_db:testapp.testapp_order_form
+msgid "Ready"
+msgstr "جاهز"
+
+#. module: testapp
+#: model:ir.model.fields.selection,name:testapp.selection__testapp_testapp__state__rejected
+#: model_terms:ir.ui.view,arch_db:testapp.form
+#: model_terms:ir.ui.view,arch_db:testapp.my_report_view
+msgid "Rejected"
+msgstr "مرفوض"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم المسؤول"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__selection
+msgid "Selection"
+msgstr "خيار"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_my_order__state
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__state
+msgid "State"
+msgstr "الحالة"
+
+#. module: testapp
+#: model:ir.model.fields,help:testapp.field_testapp_testapp__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"الحالة استنادًا إلى الأنشطة\n"
+"متأخر: تاريخ الاستحقاق مرّ بالفعل\n"
+"اليوم: تاريخ النشاط هو اليوم\n"
+"مخطط: أنشطة مستقبلية."
+
+#. module: testapp
+#: model:ir.ui.menu,name:testapp.menu_ms_main
+msgid "Test main"
+msgstr "اختبار رئيسي"
+
+#. module: testapp
+#: model:ir.model.fields,help:testapp.field_testapp_testapp__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "نوع نشاط الاستثناء في السجل."
+
+#. module: testapp
+#: model:res.groups,name:testapp.my_app_category_user
+msgid "User"
+msgstr "مستخدم"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__name
+msgid "UserName"
+msgstr "اسم المستخدم"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__value
+msgid "Value"
+msgstr "القيمة"
+
+#. module: testapp
+#. odoo-python
+#: code:addons/testapp/models/models.py:0
+#, python-format
+msgid "Value Should be between 25 and 35"
+msgstr "يجب أن تكون القيمة بين 25 و 35"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__value2
+msgid "Value2"
+msgstr "القيمة 2"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.form
+#: model_terms:ir.ui.view,arch_db:testapp.list
+msgid "all"
+msgstr "الكل"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.form
+msgid "calculater"
+msgstr "حاسبة"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.form
+#: model_terms:ir.ui.view,arch_db:testapp.testapp_order_form
+msgid "enter name"
+msgstr "أدخل الاسم"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.form
+msgid "note"
+msgstr "ملاحظة"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.form
+msgid "note2"
+msgstr "ملاحظة 2"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__cal1
+msgid "num1"
+msgstr "رقم 1"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__result
+msgid "num1+num2"
+msgstr "رقم 1 + رقم 2"
+
+#. module: testapp
+#: model:ir.model.fields,field_description:testapp.field_testapp_testapp__cal2
+msgid "num2"
+msgstr "رقم 2"
+
+#. module: testapp
+#: model_terms:ir.ui.view,arch_db:testapp.form
+#: model_terms:ir.ui.view,arch_db:testapp.list
+msgid "salary"
+msgstr "الراتب"
+
+#. module: testapp
+#: model:ir.ui.menu,name:testapp.menu_root
+msgid "testapp"
+msgstr "تطبيق الاختبار"
+
+#. module: testapp
+#: model:ir.actions.act_window,name:testapp.ms_action_window
+msgid "testapp window"
+msgstr "نافذة تطبيق الاختبار"
+
+#. module: testapp
+#: model:ir.model,name:testapp.model_testapp_testapp
+msgid "testapp.testapp"
+msgstr "testapp.testapp"
+
+#. module: testapp
+#: model:ir.model.fields.selection,name:testapp.selection__testapp_testapp__selection__key1
+msgid "val1"
+msgstr "قيمة 1"
+
+#. module: testapp
+#: model:ir.model.fields.selection,name:testapp.selection__testapp_testapp__selection__key2
+msgid "val2"
+msgstr "قيمة 2"

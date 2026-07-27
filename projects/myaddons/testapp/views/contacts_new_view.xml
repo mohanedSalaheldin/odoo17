@@ -1,0 +1,48 @@
+<odoo>
+    <record model="ir.ui.view"
+            id="contact_new_add_extension">
+        <field name="name">contact.new.add.extension</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id"
+               ref="base.view_partner_form" />
+        <field name="arch"
+               type="xml">
+            <xpath expr="//field[@name='vat']"
+                   position="after">
+                <field name="my_notes"
+                       string="My Note" />
+            </xpath>
+            <xpath expr="//field[@name='team_id']"
+                   position="after">
+                <field name="my_contacts_salas_no"
+                       string="My Contact" />
+            </xpath>
+            <!-- mobile -->
+            <!-- <xpath expr="//field[@name='mobile']"
+                   position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath> -->
+            <xpath expr="//field[@name='mobile']"
+                   position="attributes">
+                <attribute name="required">1</attribute>
+                <attribute name="string"
+                           value="Cell Phone" />
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view"
+            id="contact_new_add_extension_tree">
+        <field name="name">contact.new.add.extension.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id"
+               ref="base.view_partner_tree" />
+        <field name="arch"
+               type="xml">
+            <xpath expr="//field[@name='phone']"
+               position="before">
+                <field name="my_notes"
+                   string="My Note" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

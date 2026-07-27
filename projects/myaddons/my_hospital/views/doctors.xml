@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="view_user_from_inherit_info">
+            <field name="name">res.user.from.inherit</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='access_rights']" position="inside">
+                    <group name="my_hospital_group" string="Doctors Settings">
+                        <field name="is_doctor" />
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_user_simple_from_inherit" model="ir.ui.view">
+            <field name="name">base.view.user.simple.from.inherit</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_simple_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='mobile']" position="after">
+                    <field name="is_doctor" />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_doctors" model="ir.actions.act_window">
+            <field name="name">doctor</field>
+            <field name="res_model">res.users</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="domain">[('is_doctor', '=', True)]</field>
+            <!-- FIXED SYNTAX: Proper dictionary format -->
+            <field name="context">{'default_is_doctort': True}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    List of doctors
+                 </p>
+            </field>
+        </record>
+
+
+        <menuitem id="hospital_doctor" name="doctor" sequence="1" 
+              parent="hospital_root" action="action_doctors"/>
+    </data>
+</odoo>

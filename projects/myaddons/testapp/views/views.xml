@@ -1,0 +1,193 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view"
+                id="testapp.list">
+            <field name="name">testapp list</field>
+            <field name="model">testapp.testapp</field>
+            <field name="arch"
+                   type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="value"
+                           string="salary"
+                           sum="all" />
+                    <field name="value2" />
+                    <field name="description" />
+                    <field name="is_gentleman" />
+                    <field name="binary" />
+                    <field name="selection" />
+                    <field name="date"
+                           optional="hide" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view"
+                id="testapp.form">
+            <field name="name">testapp list</field>
+            <field name="model">testapp.testapp</field>
+            <field name="arch"
+                   type="xml">
+                <form string="My Form">
+                    <header>
+                        <button name="event_new"
+                                string="New"
+                                type="object"
+                               invisible="state != 'new'" />
+                        <button name="event_accepted"
+                                string="Accepted"
+                                type="object"
+                                invisible="state != 'new'"/>
+                        <button name="event_rejected"
+                                string="Rejected"
+                                type="object"
+                                invisible="state != 'new'" />
+                        <field name="state"
+                               widget="statusbar"
+                               statusbar_visible="new,accepted,rejected" />
+                    </header>
+                    <h1>Header</h1>
+                    <hr />
+                    <sheet>
+                        <group>
+                            <group string="01">
+                                <field name="name"
+                                       placeholder="enter name" />
+                                <field name="value"
+                                       string="salary"
+                                       sum="all" />
+                                <field name="value2" />
+                                <field name="description" />
+                                <field name="is_gentleman" />
+                            </group>
+                            <group string="02">
+                                <field name="binary" />
+                                <field name="selection" />
+                                <field name="date"
+                                       optional="hide" />
+                            </group>
+                        </group>
+                        <group string="calculater">
+                            <field name="cal1" />
+                            <field name="cal2" />
+                            <hr />
+                            <field name="result" />
+                        </group>
+                        <group>
+                            <field name="computed" />
+                        </group>
+                        <notebook>
+                            <page string="note">
+                                <group>
+                                    <field name="description" />
+                                </group>
+                            </page>
+                            <page string="note2">
+                                <group>
+                                    <field name="date" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" />
+                        <field name="activity_ids" />
+                        <field name="message_ids" />
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view"
+                id="testapp_order_form">
+            <field name="name">Order list</field>
+            <field name="model">my.order</field>
+            <field name="arch"
+                   type="xml">
+                <form string="My Form">
+                    <header>
+                        <button name="event_ready"
+                                string="Ready"
+                                type="object"
+                                invisible="state != 'new'" />
+                        <field name="state"
+                               widget="statusbar"
+                               statusbar_visible="new,ready" />
+                    </header>
+                    <h1>Header</h1>
+                    <hr />
+                    <sheet>
+                        <group string="01">
+                            <field name="name"
+                                   placeholder="enter name" />
+                            <field name="order_des" />
+                            <field name="item_ids" />
+                        </group>
+                    </sheet>
+                    <!-- <div class="oe_chatter">
+                <field name="message_follower_ids"/>
+                <field name="activity_ids"/>
+                <field name="message_ids"/>
+            </div> -->
+                </form>
+            </field>
+        </record>
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window"
+                id="ms_action_window">
+            <field name="name">testapp window</field>
+            <field name="res_model">testapp.testapp</field>
+            <field name="view_mode">tree,form,kanban,graph</field>
+        </record>
+        <record model="ir.actions.act_window"
+                id="ms_order_action_window">
+            <field name="name">Orders</field>
+            <field name="res_model">my.order</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.actions.act_window"
+                id="ms_order_item_action_window">
+            <field name="name">Order Items</field>
+            <field name="res_model">my.order.item</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- server action to the one above -->
+        <!-- <record model="ir.actions.server" id="testapp.action_server">
+      <field name="name">testapp server</field>
+      <field name="model_id" ref="model_testapp_testapp"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record> -->
+        <!-- Top menu item -->
+
+        <menuitem name="testapp"
+                  id="testapp.menu_root" />
+
+        <!-- menu categories -->
+        <menuitem name="Test main"
+                  id="menu_ms_main"
+                  parent="testapp.menu_root"
+                  action="ms_action_window" />
+
+        <menuitem name="My Orders"
+                  id="menu_ms_oders"
+                  parent="testapp.menu_root" />
+
+        <!-- actions -->
+        <menuitem name="Orders"
+                  id="testapp.menu_ms_order_list"
+                  parent="menu_ms_oders"
+                  action="ms_order_action_window" />
+
+        <menuitem name="Items"
+                  id="testapp.menu_ms_order_item_list"
+                  parent="menu_ms_oders"
+                  action="ms_order_item_action_window" />
+
+    </data>
+</odoo>

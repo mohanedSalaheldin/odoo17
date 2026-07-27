@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_my_report" model="ir.actions.report">
+        <field name="name">Get Report</field>
+        <field name="model">testapp.testapp</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">testapp.my_report_view</field>
+        <field name="report_file">testapp.my_report_view</field>
+        <field name="binding_model_id" ref="model_testapp_testapp"></field>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="my_report_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <!-- Header Section -->
+                        <div class="row border-bottom mb-4 pb-2">
+                            <div class="col-6">
+                                <h2>Document:
+                                    <span t-field="o.name"/>
+                                </h2>
+                            </div>
+                            <div class="col-6 text-end">
+                                <!-- State Badge -->
+                                <span t-if="o.state == 'new'" class="badge bg-info text-white p-2">New</span>
+                                <span t-if="o.state == 'accepted'" class="badge bg-success text-white p-2">Accepted</span>
+                                <span t-if="o.state == 'rejected'" class="badge bg-danger text-white p-2">Rejected</span>
+                            </div>
+                        </div>
+                        <!-- Main Details Grid -->
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <strong>User Name:</strong>
+                                <p t-field="o.name"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Date &amp; Time:</strong>
+                                <p t-field="o.date"/>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-4">
+                                <strong>Value (Integer):</strong>
+                                <p t-field="o.value"/>
+                            </div>
+                            <div class="col-4">
+                                <strong>Value 2 (Float):</strong>
+                                <p t-field="o.value2"/>
+                            </div>
+                            <div class="col-4">
+                                <strong>Computed Value:</strong>
+                                <p t-field="o.computed"/>
+                            </div>
+                        </div>
+                        <!-- Custom Field Types Handling -->
+                        <div class="row mb-4">
+                            <div class="col-4">
+                                <strong>Gender Designation:</strong>
+                                <p>
+                                    <span t-if="o.is_gentleman">Male</span>
+                                    <span t-else="">Female</span>
+                                </p>
+                            </div>
+                            <div class="col-4">
+                                <strong>Selection Choice:</strong>
+                                <!-- Using t-field directly extracts the label ('val1') instead of the database key ('key1') -->
+                                <p t-field="o.selection"/>
+                            </div>
+                            <div class="col-4">
+                                <strong>Attached File/Image:</strong>
+                                <p>
+                                    <!-- Checks if binary exists, rendering it safely as an inline base64 image -->
+                                    <img t-if="o.binary" t-att-src="image_data_uri(o.binary)" style="max-height: 80px; max-width: 100%; object-fit: contain;"/>
+                                    <span t-else="" class="text-muted">No file attached</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Full Width Text Block -->
+                        <div class="row mb-4" t-if="o.description">
+                            <div class="col-12">
+                                <strong class="d-block border-bottom pb-1 mb-2">Description</strong>
+                                <p t-field="o.description"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

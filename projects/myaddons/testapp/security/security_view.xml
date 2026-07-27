@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="my_app_category" model="ir.module.category">
+        <field name="name">My Category Settings</field>        
+        <field name="description">My Category Settings pla pla pla</field>        
+        <field name="sequence">1</field>        
+    </record>
+
+    <record id="my_app_category_user" model="res.groups">
+        <field name="name">User</field>        
+        <field name="category_id" ref='testapp.my_app_category' />        
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />        
+    </record>
+    
+    <record id="my_app_category_admin" model="res.groups">
+        <field name="name">Admin</field>        
+        <field name="category_id" ref='testapp.my_app_category' />        
+        <field name="implied_ids" eval="[(4, ref('testapp.my_app_category_user'))]" />        
+    </record>
+
+</odoo>

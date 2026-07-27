@@ -1,0 +1,28 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="contacts_patient_info">
+      <field name="name">contacts.new.add.extension</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='vat']" position="after">
+          <field name="is_patient" />
+        </xpath>
+      </field>
+    </record>
+    <record id="action_patients" model="ir.actions.act_window">
+      <field name="name">Patient</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form,kanban</field>
+      <field name="domain">[('is_patient', '=', True)]</field>
+      <!-- FIXED SYNTAX: Proper dictionary format -->
+      <field name="context">{'default_is_patient': True}</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          List of Patients
+        </p>
+      </field>
+    </record>
+  </data>
+</odoo>
