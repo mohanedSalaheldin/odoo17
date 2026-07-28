@@ -13,4 +13,6 @@
               parent="hospital_root"/>
     <menuitem id="hospital_appointments" name="Appointments" sequence="0" 
               parent="hospital_transactions" action="action_appointments"/>
+    <menuitem id="hospital_medicines" name="medicines" sequence="101" 
+              parent="hospital_transactions" action="action_the_medicines"/>
 </odoo>

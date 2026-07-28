@@ -21,7 +21,9 @@ A hospital manager oversees the administrative, financial, and operational funct
         "views/templates.xml",
         "views/doctors.xml",
         "data/sequence_data.xml",
+        "data/data.xml",
         "views/appointments.xml",
+        "views/medicines.xml",
         "views/menus.xml",
     ],
 }

@@ -104,3 +104,13 @@ class Prescription(models.Model):
     name = fields.Char(string="Medicine Name")
     notes = fields.Text(string="Notes")
     appointment_id = fields.Many2one('the.appointments', string="Appointment")
+    medicine_id = fields.Many2one('the.medicines', string="Medicine")
+
+
+
+class Medicines(models.Model):
+    _name = 'the.medicines'
+
+    name = fields.Char(string='Medicine Name', required=True)
+    effective_material = fields.Char(string="Effective Material")
+    prescription_ids = fields.One2many('the.prescription', 'medicine_id')

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+        <record id="medicine_01" model="the.medicines">
+            <field name="name">Panadol Extra</field>
+            <field name="effective_material">Paracetamol + Caffeine</field>
+        </record>
+        <record id="medicine_02" model="the.medicines">
+            <field name="name">Amoxil</field>
+            <field name="effective_material">Amoxicillin</field>
+        </record>
+        <record id="medicine_03" model="the.medicines">
+            <field name="name">Augmentin</field>
+            <field name="effective_material">Amoxicillin + Clavulanic Acid</field>
+        </record>
+        <record id="medicine_04" model="the.medicines">
+            <field name="name">Brufen</field>
+            <field name="effective_material">Ibuprofen</field>
+        </record>
+        <record id="medicine_05" model="the.medicines">
+            <field name="name">Cataflam</field>
+            <field name="effective_material">Diclofenac Potassium</field>
+        </record>
+        <record id="medicine_06" model="the.medicines">
+            <field name="name">Glucophage</field>
+            <field name="effective_material">Metformin Hydrochloride</field>
+        </record>
+    </data>
+</odoo>

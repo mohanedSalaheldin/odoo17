@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="the_medicines_view_form" model="ir.ui.view">
+        <field name="name">the.medicines.view.form</field>
+        <field name="model">the.medicines</field>
+        <field name="arch" type="xml">
+            <form string="Medicines Form">
+                <group>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="effective_material"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+    <!-- the_medicines tree view -->
+    <record id="the_medicines_view_tree" model="ir.ui.view">
+        <field name="name">the.medicines.view.tree</field>
+        <field name="model">the.medicines</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="effective_material"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_the_medicines" model="ir.actions.act_window">
+        <field name="name">Medicines</field>
+        <field name="res_model">the.medicines</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first record!
+            </p>
+        </field>
+    </record>
+</odoo>
