@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <record model="ir.ui.view" id="appointment_tree">
         <field name="name">the.appointments.tree</field>
         <field name="model">the.appointments</field>
@@ -11,15 +10,24 @@
                 <field name="patient_age" />
                 <field name="app_date" />
                 <field name="notes" />
+                <field name="state" />
             </tree>
         </field>
     </record>
-
     <record id="appointment_form" model="ir.ui.view">
         <field name="name">the.appointments.form</field>
         <field name="model">the.appointments</field>
         <field name="arch" type="xml">
             <form string="Appointment Form">
+                <header>
+                    <button string="confirm" name="action_confirm" 
+                type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button string="done" name="action_done" type="object" 
+                class="oe_highlight" invisible="state != 'confirm'"/>
+                    <button string="cancelled" name="action_cancel" type="object" 
+                invisible="state == 'done' or state == 'cancelled'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                </header>
                 <sheet>
                     <h1>
                         <field name="name" readonly="1" force_save="1"/>
@@ -28,18 +36,26 @@
                         <group>
                             <field name="app_date"/>
                         </group>
-
                         <group>
                             <field name="patient_id" />
                             <field name="patient_age" />
                         </group>
                     </group>
                     <group>
+                        <field name="doctor_id" />
                         <field name="notes" />
                     </group>
+                    <notebook>
+                        <page string="Prescription">
+                            <field name="prescription_ids" />
+                        </page>
+                        <page string="Doctor Notes">
+                            <group name="name" string="string">
+                                <field name="doctor_notes" />
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
-
-                
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
                     <field name="activity_ids" widget="mail_activity"/>
@@ -48,9 +64,32 @@
             </form>
         </field>
     </record>
-
-
-
+    <record id="the_prescription_view_form" model="ir.ui.view">
+        <field name="name">the_prescription.view.form</field>
+        <field name="model">the.prescription</field>
+        <field name="arch" type="xml">
+            <form string="The Prescription">
+                <group>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="notes" />
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="the_prescription_view_tree" model="ir.ui.view">
+        <field name="name">the_prescription.view.tree</field>
+        <field name="model">the.prescription</field>
+        <field name="arch" type="xml">
+            <tree string="The Prescription">
+                <field name="name"/>
+                <field name="notes"/>
+            </tree>
+        </field>
+    </record>
     <record id="action_appointments" model="ir.actions.act_window">
         <field name="name">appointments</field>
         <field name="res_model">the.appointments</field>
