@@ -7,15 +7,14 @@
             <form string="Add Appointment">
                 <group>
                     <group>
-                        <field name="patient_id"/>
-                        <field name="doctor_id"/>
+                        <field name="patient_id" options="{'no_create_edit': True, 'no_create': True}"/>
+                        <field name="doctor_id" options="{'no_create_edit': True, 'no_create': True}"/>
                     </group>
                     <group>
                         <field name="app_date"/>
-                        <field name="note"/>
+                        <field name="notes"/>
                     </group>
                 </group>
-                <!-- تم إخراج الـ footer خارج الـ group الرئيسي -->
                 <footer>
                     <button name="action_confirm_appointment" string="Confirm" type="object" class="btn-primary"/>
                     <button string="Cancel" special="cancel" class="btn-secondary"/>
@@ -23,7 +22,6 @@
             </form>
         </field>
     </record>
-    <!-- تم تعديل الـ id وحذف my_hospital. منه -->
     <record id="action_add_appointments_wizard" model="ir.actions.act_window">
         <field name="name">Add Appointment</field>
         <field name="res_model">add.appointment</field>

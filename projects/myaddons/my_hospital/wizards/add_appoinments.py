@@ -15,8 +15,14 @@ class AddAppointmentWizard(models.TransientModel):
     doctor_id = fields.Many2one(
         "res.users", string="Doctor", domain="[('is_doctor', '=', True)]"
     )
-    note = fields.Text(string='Notes')
+    notes = fields.Text(string='Notes')
     app_date = fields.Datetime(string='Date')
 
     def action_confirm_appointment(self):
-        print("--------------- ok ---------------")
+        vals = {
+            'patient_id': self.patient_id.id,
+            'doctor_id': self.doctor_id.id,
+            'notes': self.notes,
+            'app_date': self.app_date,
+        }
+        self.env['the.appointments'].create(vals)
