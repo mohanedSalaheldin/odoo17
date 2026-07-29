@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_the_appointments,access.the.appointments,model_the_appointments,base.group_user,1,1,1,1
 access_the_prescription_user,the.prescription.user,model_the_prescription,base.group_user,1,1,1,1
 access_the_medicines_user,the.medicines.user,model_the_medicines,base.group_user,1,1,1,1
+access_add_appointment_user,add.appointment.user,model_add_appointment,base.group_user,1,1,1,1

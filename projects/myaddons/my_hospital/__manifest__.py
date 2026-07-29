@@ -17,11 +17,13 @@ A hospital manager oversees the administrative, financial, and operational funct
     # always loaded
     "data": [
         "security/ir.model.access.csv",
+        "security/security.xml",
+        "wizards/add_appoinments.xml",
+        "data/data.xml",
+        "data/sequence_data.xml",
         "views/views.xml",
         "views/templates.xml",
         "views/doctors.xml",
-        "data/sequence_data.xml",
-        "data/data.xml",
         "views/appointments.xml",
         "views/medicines.xml",
         "views/menus.xml",

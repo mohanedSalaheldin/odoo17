@@ -9,6 +9,7 @@
                 <xpath expr="//page[@name='access_rights']" position="inside">
                     <group name="my_hospital_group" string="Doctors Settings">
                         <field name="is_doctor" />
+                        <field name="is_supervisor" />
                     </group>
                 </xpath>
             </field>
@@ -20,6 +21,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='mobile']" position="after">
                     <field name="is_doctor" />
+                    <field name="is_supervisor" />
                 </xpath>
             </field>
         </record>

@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
+                <field name="doctor_id" />
                 <field name="patient_id" />
                 <field name="patient_age" />
                 <field name="app_date" />

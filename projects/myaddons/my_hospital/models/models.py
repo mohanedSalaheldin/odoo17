@@ -12,36 +12,37 @@ class Patients(models.Model):
     app_count = fields.Integer(string="Count", compute="get_app_count")
 
     def get_appointments(self):
-        action = {
-            "name": "appointments",
+        self.ensure_one()
+        return {
+            "name": _("Appointments"),
             "res_model": "the.appointments",
-            "view_id": False,
             "view_mode": "tree,form",
             "type": "ir.actions.act_window",
             "domain": [("patient_id", "=", self.id)],
+            "context": {"default_patient_id": self.id},
         }
-        return action
 
     def get_app_count(self):
-        count = self.env["the.appointments"].search_count(
-            [("patient_id", "=", self.id)]
-        )
-        self.app_count = count
+        for rec in self:
+            rec.app_count = self.env["the.appointments"].search_count(
+                [("patient_id", "=", rec.id)]
+            )
 
 
-class ResUser(models.Model):
+class ResUsers(models.Model):
     _inherit = "res.users"
 
     is_doctor = fields.Boolean(string="Is Doctor")
+    is_supervisor = fields.Boolean(string="Is Supervisor")
 
 
 class TheAppointments(models.Model):
     _name = "the.appointments"
-    _description = "Appointment module"
+    _description = "Appointment Module"
     _inherit = ["mail.thread", "mail.activity.mixin"]
 
     name = fields.Char(
-        string="Apppintment ID",
+        string="Appointment ID",
         required=True,
         copy=False,
         readonly=True,
@@ -58,32 +59,34 @@ class TheAppointments(models.Model):
 
     state = fields.Selection(
         [
-            ("draft", "draft"),
-            ("confirm", "confirm"),
-            ("done", "done"),
-            ("cancelled", "cancelled"),
+            ("draft", "Draft"),
+            ("confirm", "Confirm"),
+            ("done", "Done"),
+            ("cancelled", "Cancelled"),
         ],
         string="Status",
         readonly=True,
         default="draft",
+        tracking=True,
     )
 
     patient_age = fields.Integer(string="Age", related="patient_id.age")
     notes = fields.Text(string="Notes")
     doctor_notes = fields.Text(string="Doctor Notes")
     app_date = fields.Datetime(string="Date Time", required=True)
-    prescription_ids = fields.One2many('the.prescription', 'appointment_id')
-    doctor_id = fields.Many2one('res.users', string="Doctor", domain="[('is_doctor', '=', True)]")
+    prescription_ids = fields.One2many("the.prescription", "appointment_id")
+    doctor_id = fields.Many2one(
+        "res.users", string="Doctor", domain="[('is_doctor', '=', True)]"
+    )
 
-
-    @api.model
-    def create(self, vals):
-        if vals.get("name", _("New")) == _("New"):
-            vals["name"] = self.env["ir.sequence"].next_by_code(
-                "the.appointments.sequence"
-            ) or _("New")
-        result = super().create(vals)
-        return result
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get("name", _("New")) == _("New"):
+                vals["name"] = self.env["ir.sequence"].next_by_code(
+                    "the.appointments.sequence"
+                ) or _("New")
+        return super().create(vals_list)
 
     def action_confirm(self):
         for item in self:
@@ -92,7 +95,7 @@ class TheAppointments(models.Model):
     def action_done(self):
         for item in self:
             item.state = "done"
-            
+
     def action_cancel(self):
         for item in self:
             item.state = "cancelled"
@@ -100,17 +103,18 @@ class TheAppointments(models.Model):
 
 class Prescription(models.Model):
     _name = "the.prescription"
+    _description = "Prescription Module"
 
     name = fields.Char(string="Medicine Name")
     notes = fields.Text(string="Notes")
-    appointment_id = fields.Many2one('the.appointments', string="Appointment")
-    medicine_id = fields.Many2one('the.medicines', string="Medicine")
-
+    appointment_id = fields.Many2one("the.appointments", string="Appointment")
+    medicine_id = fields.Many2one("the.medicines", string="Medicine")
 
 
 class Medicines(models.Model):
-    _name = 'the.medicines'
+    _name = "the.medicines"
+    _description = "Medicines Module"
 
-    name = fields.Char(string='Medicine Name', required=True)
+    name = fields.Char(string="Medicine Name", required=True)
     effective_material = fields.Char(string="Effective Material")
-    prescription_ids = fields.One2many('the.prescription', 'medicine_id')
+    prescription_ids = fields.One2many("the.prescription", "medicine_id")
