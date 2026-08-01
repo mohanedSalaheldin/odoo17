@@ -29,11 +29,6 @@
         </xpath>
       </field>
     </record>
-
-    nrekjd
-    dfdf
-
-
     <record id="action_patients" model="ir.actions.act_window">
       <field name="name">Patient</field>
       <field name="res_model">res.partner</field>
