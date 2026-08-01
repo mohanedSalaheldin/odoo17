@@ -2,11 +2,10 @@
 <templates xml:space="preserve">
     <t t-name="owl_dev.TodoList">
         <div class="todo-list-container p-4">
-
             <!-- Header Controls: New Button & Search Bar -->
             <div class="row mb-3 align-items-center">
                 <div class="col-6">
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" t-on-click="addTask">
                         New
                     </button>
                 </div>
@@ -17,7 +16,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Tasks Table -->
             <div class="row">
                 <div class="col-12">
@@ -29,29 +27,33 @@
                                 <th scope="col" style="width: 30%;" class="text-end">Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody t-foreach="state.taskList" t-as="task" t-key="task.id">
                             <tr>
                                 <td>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="taskDone1"/>
-                                        <label class="form-check-label ms-1" for="taskDone1">
-                                            Done
+                                        <input class="form-check-input" type="checkbox"
+                                               t-att-id="task.id" t-att-checked="task.completed"/>
+                                        <label class="form-check-label ms-1" t-att-for="task.id"
+                                                t-att-class="task.completed ? 'text-decoration-line-through' : ''">
+                                            <span t-out="task.name"/>
                                         </label>
                                     </div>
                                 </td>
                                 <td>
-                                    <input type="color" class="form-control form-control-color" value="#1c3e12" disabled="1"/>
+                                    <input type="color" class="form-control form-control-color" t-att-value="task.color" disabled="1"/>
                                 </td>
                                 <td class="text-end">
-                                    <button class="btn btn-success me-2">Edit</button>
-                                    <button class="btn btn-danger">Delete</button>
+                                    <button class="btn btn-success me-2" data-bs-toggle="modal" 
+                                        data-bs-target="#exampleModal"  t-on-click="() => this.editTask(task)">
+                                        Edit
+                                    </button>
+                                    <button class="btn btn-danger" t-on-click="() => this.deleteTask(task)">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-
             <!-- Modal Fade (Add / Edit Task) -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -61,40 +63,37 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-
                             <!-- Task Description Input -->
                             <div class="row mb-3">
                                 <label for="name" class="col-sm-2 col-form-label">Task DES</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="name" />
+                                    <input type="text" class="form-control" id="name" 
+                                        t-model="state.task.name" t-att-value="state.task.name"/>
                                 </div>
                             </div>
-
                             <!-- Color Picker Input -->
                             <div class="row mb-3">
                                 <label for="color" class="col-sm-2 col-form-label">Color</label>
                                 <div class="col-sm-10">
-                                    <input type="color" class="form-control form-control-color" id="color" value="#563d7c" title="Pick color" />
+                                    <input type="color" class="form-control form-control-color" id="color" 
+                                        t-model="state.task.color" t-att-value="state.task.color" title="Pick color" />
                                 </div>
                             </div>
-
                             <!-- Completed Checkbox Input -->
                             <div class="row mb-3">
                                 <label for="completed" class="col-sm-2 col-form-label">Completed</label>
                                 <div class="col-sm-10">
-                                    <input class="form-check-input" type="checkbox" id="completed" />
+                                    <input class="form-check-input" type="checkbox" id="completed" t-model="state.task.completed" t-att-value="state.task.completed"/>
                                 </div>
                             </div>
-
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" t-on-click="saveTask">Save changes</button>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </t>
 </templates>

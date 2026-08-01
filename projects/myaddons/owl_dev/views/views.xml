@@ -1,0 +1,58 @@
+<odoo>
+  <data>
+
+<!--  List View  -->
+    <record id="owl_dev_todo_tree_view" model="ir.ui.view">
+      <field name="name">owl.dev.todo.tree.view</field>
+      <field name="model">owl_dev.todo.list</field>
+      <field name="arch" type="xml">
+        <tree string="List Tasks">
+          <field name="name"/>
+          <field name="color" widget="color"/>
+          <field name="completed"/>
+        </tree>
+      </field>
+    </record>
+<!--  Form View  -->
+    <record id="owl_dev_todo_view_form" model="ir.ui.view">
+        <field name="name">owl.dev.todo.view.form</field>
+        <field name="model">owl_dev.todo.list</field>
+        <field name="arch" type="xml">
+            <form string="Tasks Form">
+                <sheet>
+                    <group>
+                      <field name="name"/>
+                      <field name="color" widget="color"/>
+                      <field name="completed"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--  Action  -->
+
+    <record id="action_owl_dev_todo_list" model="ir.actions.act_window">
+      <field name="name">Todo List</field>
+      <field name="res_model">owl_dev.todo.list</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{}</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create your first record
+        </p>
+      </field>
+    </record>
+
+    <record id="action_owl_dev_todolist_js" model="ir.actions.client">
+      <field name="name">Todo List OWL</field>
+      <field name="tag">owl_dev_action_todo_list_js</field>
+    </record>
+
+<!--  Menu  -->
+    <menuitem id="menu_owl_dev" name="Owl Dev" sequence="1">
+      <menuitem id="menu_owl_dev_todo_list" name="Todo List"  action="action_owl_dev_todo_list" sequence="10"/>
+      <menuitem id="menu_owl_dev_todo_list_js" name="Todo List OWL"  action="action_owl_dev_todolist_js" sequence="20"/>
+    </menuitem>
+  </data>
+</odoo>
