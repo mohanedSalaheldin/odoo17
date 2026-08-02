@@ -2,7 +2,7 @@
 
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
-import { Component, useState, onWillStart } from "@odoo/owl";
+import { Component, useState, onWillStart, useRef } from "@odoo/owl";
 
 export class OwlDevTodoList extends Component {
     setup() {
@@ -15,6 +15,7 @@ export class OwlDevTodoList extends Component {
 
         this.orm = useService("orm");
         this.model = "owl_dev.todo.list";
+        this.searchInput = useRef("search-input");
 
         onWillStart(async () => {
             await this.getAllTasks();
@@ -48,7 +49,7 @@ export class OwlDevTodoList extends Component {
         this.state.isEdit = true;
         this.state.task = { ...task };
     }
-    
+
     async deleteTask(task) {
         await this.orm.unlink(this.model, [task.id]);
         await this.getAllTasks();
@@ -74,6 +75,26 @@ export class OwlDevTodoList extends Component {
         }
 
         await this.getAllTasks();
+    }
+
+
+    async searchTask() {
+        const text = this.searchInput.el.value;
+        this.state.taskList = await this.orm.searchRead(
+            this.model,
+            [
+                ['name', 'ilike', text],
+            ],
+            ["id", "name", "color", "completed"]
+        );
+    }
+
+    async toggleCheck(e, task) {
+        const checked = e.target.checked;
+        task.completed = checked;
+        await this.orm.write(this.model, [task.id], {
+            completed: checked,
+        });
     }
 }
 

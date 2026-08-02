@@ -11,8 +11,8 @@
                 </div>
                 <div class="col-6">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search here..."/>
-                        <button class="btn btn-outline-secondary">Search</button>
+                        <input type="text" class="form-control" t-ref="search-input" placeholder="Search here..."/>
+                        <button class="btn btn-outline-secondary" t-on-click="searchTask">Search</button>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,9 @@
                                 <td>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox"
-                                               t-att-id="task.id" t-att-checked="task.completed"/>
+                                               t-att-id="task.id" t-att-checked="task.completed"
+                                               t-on-click="(e)=> this.toggleCheck(e, task)"
+                                               />
                                         <label class="form-check-label ms-1" t-att-for="task.id"
                                                 t-att-class="task.completed ? 'text-decoration-line-through' : ''">
                                             <span t-out="task.name"/>

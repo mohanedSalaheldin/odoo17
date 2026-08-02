@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <t t-name="owl_dev.web.ListView.Buttons.inherit" t-inherit="web.ListView.Buttons" t-inherit-mode="primary">
+        <xpath expr="//div" position="inside">
+            <button class="btn btn-primary ms-1" t-on-click="getSales">
+                Orders
+            </button>
+            <button class="btn btn-primary ms-1" t-on-click="getInvoices">
+                Invoices
+            </button>
+            <button class="btn btn-primary ms-1" t-on-click="getMeetings">
+                Meets
+            </button>
+        </xpath>
+    </t>
+</templates>
