@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <t t-name="owl_dev.web.kanbanView.Buttons.inherit" t-inherit="web.KanbanView.Buttons" t-inherit-mode="primary">
+        <xpath expr="//div[hasclass('o_cp_buttons')]" position="inside">
+            <button class="btn btn-primary ms-1" t-on-click="getSales">
+                Orders
+            </button>
+            <button class="btn btn-primary ms-1" t-on-click="getInvoices">
+                Invoices
+            </button>
+            <button class="btn btn-primary ms-1" t-on-click="getMeetings">
+                Meets
+            </button>
+        </xpath>
+    </t>
+    <t t-name="owl_dev.web.kanbanView.inherit" t-inherit="web.KanbanView" t-inherit-mode="primary">
+        <xpath expr="//t[contains(@t-component, 'props.Render')]" position="before">
+            <div class="p-3 bg-white customers_kanban_sidebar">
+                <h2>Customer Locations</h2>
+                <div class="list-group">
+                    <t t-foreach="customerLocations" t-as="cust" t-key="cust.state_id[0]">
+                        <a class="list-group-item" href="#" t-on-click="()=> this.selectLocation(cust.state_id)">
+                            <span t-esc="cust.state_id[1]"></span>
+                            <span t-esc="cust.state_id_count" class="badge bg-primary text-white"></span>
+                        </a>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//Layout" position="attributes">
+            <attribute name="className">model.userSampleModel ? 'o_view_sample_data' : '' + "d-flex"</attribute>
+        </xpath>
+    </t>
+</templates>
