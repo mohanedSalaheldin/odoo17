@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
     <t t-name="owl_dev.email.Valid.Widget" t-inherit="web.EmailField" >
+
         <xpath expr="." position="inside">
             <span t-if="!isValidFormat" class="text-danger ms-2">
                 Invalid Email Format
             </span>
         </xpath>
+        
         <xpath expr="//input" position="after">
             <a
                 t-if="props.record.data[props.name] and isValidFormat"
