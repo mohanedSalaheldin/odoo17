@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl_dev.email.Valid.Widget" t-inherit="web.EmailField" >
+        <xpath expr="." position="inside">
+            <span t-if="!isValidFormat" class="text-danger ms-2">
+                Invalid Email Format
+            </span>
+        </xpath>
+        <xpath expr="//input" position="after">
+            <a
+                t-if="props.record.data[props.name] and isValidFormat"
+                t-att-href="'mailto:'+props.record.data[props.name]"
+                class="ms-3 d-inline-flex align-items-center"
+                target="_blank"
+            >
+                <i class="fa fa-envelope" data-tooltip="Send Email" aria-label="Send Email"></i>
+            </a>
+        </xpath>
+    </t>
+</templates>

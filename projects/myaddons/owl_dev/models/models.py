@@ -10,3 +10,8 @@ class OwlDev(models.Model):
     name = fields.Char(string="Task Name")
     color = fields.Char(string="Color")
     completed = fields.Boolean(string="Completed")
+
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+    
+    salary = fields.Integer(string='salary')

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <t t-name="owl_dev.web.FormView.Buttons.inherit" t-inherit="web.FormView" t-inherit-mode="primary">
+        <xpath expr="//Layout//CogMenu" position="after">
+            <button class="btn btn-primary ms-1" t-on-click="()=>this.openWebsite(model.root.data.website)">
+                Website
+            </button>
+        </xpath>
+    </t>
+</templates>

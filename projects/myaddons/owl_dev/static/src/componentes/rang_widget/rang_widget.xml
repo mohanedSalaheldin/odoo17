@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl_dev.RangeWidget" owl="1">
+        <div>
+            <label for="range1" class="form-label">
+                <span t-esc="props.record.data.salary"></span>
+            </label>
+            <input type="range" class="form-range" id="range1" min="100" max="10000" step="100" 
+            t-att-name="props.name" t-att-id="props.id" 
+            t-on-change="(ev)=>onChangeWidget(ev, props)" t-att-value="props.record.data.salary"/>
+        </div>
+    </t>
+</templates>

@@ -12,7 +12,6 @@
                 </xpath>
             </field>
         </record>
-
         <record id="partner_view_kanban_form" model="ir.ui.view">
             <field name="name">partner.view.kanban.form</field>
             <field name="model">res.partner</field>
@@ -20,6 +19,23 @@
             <field name="arch" type="xml">
                 <xpath expr="//kanban" position="attributes">
                     <attribute name="js_class" >res_partner_kanban_controller</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="partner_view_form_form" model="ir.ui.view">
+            <field name="name">partner.view.form.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="attributes">
+                    <attribute name="js_class" >res_partner_form_controller</attribute>
+                </xpath>
+                <field name="email" position="attributes">
+                    <attribute name="widget">valid_email</attribute>
+                </field>
+                <xpath expr="//field[@name='website']" position="after">
+                    <!-- Corrected tag from <fiels> to <field> -->
+                    <field name="salary" string="SALARY" widget="range_widget"/>
                 </xpath>
             </field>
         </record>
