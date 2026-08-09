@@ -10,6 +10,8 @@ class Patients(models.Model):
     birthdate = fields.Date(string="Birthdate")
     age = fields.Integer(string="Age")
     app_count = fields.Integer(string="Count", compute="get_app_count")
+    appointment_ids = fields.One2many('the.appointments','patient_id');
+
 
     def get_appointments(self):
         self.ensure_one()
@@ -34,6 +36,7 @@ class ResUsers(models.Model):
 
     is_doctor = fields.Boolean(string="Is Doctor")
     is_supervisor = fields.Boolean(string="Is Supervisor")
+    appointment_ids = fields.One2many('the.appointments','patient_id');
 
 
 class TheAppointments(models.Model):

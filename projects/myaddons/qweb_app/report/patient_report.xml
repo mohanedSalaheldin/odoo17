@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <template id="patient_profile_report" name="Patient Profile Report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page fs-6">
+                        <!-- Header Section -->
+                        <div class="row align-items-center mb-4 pb-3 border-bottom">
+                            <div class="col-8">
+                                <h2 class="fw-bold text-primary mb-1" t-field="doc.name"/>
+                                <span class="text-muted">Medical Profile &amp; History</span>
+                            </div>
+                            <div class="col-4 text-end">
+                                <span t-if="doc.is_patient" class="badge bg-success fs-6 px-3 py-2">Active Patient</span>
+                                <span t-else="" class="badge bg-secondary fs-6 px-3 py-2">General Contact</span>
+                            </div>
+                        </div>
+                        <!-- Patient Summary Card -->
+                        <div class="card mb-4 border-0 bg-light shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title text-dark fw-bold mb-3">Patient Summary</h5>
+                                <div class="row g-3">
+                                    <div class="col-4">
+                                        <small class="text-muted d-block">Birthdate</small>
+                                        <span class="fw-semibold" t-field="doc.birthdate" t-options="{'widget': 'date'}"/>
+                                    </div>
+                                    <div class="col-4">
+                                        <small class="text-muted d-block">Age</small>
+                                        <span class="fw-semibold" t-field="doc.age"/> Years
+                                    </div>
+                                    <div class="col-4">
+                                        <small class="text-muted d-block">Total Appointments</small>
+                                        <span class="fw-semibold" t-field="doc.app_count"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Appointments & Prescriptions Section -->
+                        <div class="mt-4">
+                            <h4 class="fw-bold text-secondary mb-3">Appointment History</h4>
+                            <t t-if="doc.appointment_ids">
+                                <t t-foreach="doc.appointment_ids" t-as="appo">
+                                    <div class="card mb-3 border">
+                                        <div class="card-header bg-body-tertiary d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong class="text-primary me-2" t-field="appo.name"/>
+                                                <span class="text-muted me-3">
+                                                    <i class="fa fa-calendar me-1"/>
+                                                    <span t-field="appo.app_date"/>
+                                            </span>
+                                                <span class="text-dark">
+                                                    <strong>Doctor:</strong>
+                                                    <span t-field="appo.doctor_id.name" t-options="{'no_value': 'Not Assigned'}"/>
+                                            </span>
+                                            </div>
+                                            <div>
+                                                <!-- Status Badges -->
+                                                <span t-if="appo.state == 'draft'" class="badge bg-secondary">Draft</span>
+                                                <span t-elif="appo.state == 'confirm'" class="badge bg-info">Confirmed</span>
+                                                <span t-elif="appo.state == 'done'" class="badge bg-success">Done</span>
+                                                <span t-elif="appo.state == 'cancelled'" class="badge bg-danger">Cancelled</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <!-- Notes Display -->
+                                            <div class="row mb-3" t-if="appo.notes or appo.doctor_notes">
+                                                <div class="col-6" t-if="appo.notes">
+                                                    <small class="text-muted d-block fw-bold">Patient / General Notes:</small>
+                                                    <p class="mb-0 text-wrap" t-field="appo.notes"/>
+                                                </div>
+                                                <div class="col-6" t-if="appo.doctor_notes">
+                                                    <small class="text-muted d-block fw-bold">Doctor Notes:</small>
+                                                    <p class="mb-0 text-wrap" t-field="appo.doctor_notes"/>
+                                                </div>
+                                            </div>
+                                            <!-- Prescriptions Sub-table -->
+                                            <div t-if="appo.prescription_ids">
+                                                <small class="fw-bold text-dark d-block mb-2">Prescription Items:</small>
+                                                <table class="table table-sm table-bordered align-middle mb-0">
+                                                    <thead class="table-light">
+                                                        <tr>
+                                                            <th>Medicine</th>
+                                                            <th>Active Material</th>
+                                                            <th>Dosage / Instructions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr t-foreach="appo.prescription_ids" t-as="pres">
+                                                            <td>
+                                                                <span t-out="pres.medicine_id.name or pres.name"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-field="pres.medicine_id.effective_material"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-field="pres.notes"/>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div t-else="" class="text-muted fst-italic small">
+                                            No prescriptions issued for this appointment.
+                                        </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <div class="alert alert-info text-center" role="alert">
+                                No appointments recorded for this patient.
+                            </div>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="action_report_patient_profile_report" model="ir.actions.report">
+        <field name="name">Patient Card</field>
+        <field name="model">res.partner</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">qweb_app.patient_profile_report</field>
+        <field name="report_file">qweb_app.patient_profile_report</field>
+        <field name="print_report_name">'patient_card'</field>
+        <field name="binding_model_id" ref="mail.model_res_partner"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
