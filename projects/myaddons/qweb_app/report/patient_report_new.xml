@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="patient_profile_report_new">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <t t-foreach="patients" t-as="p">
+                    <div class="col-md-6">
+                        <table>
+                            <tr>
+                                <t t-if="p.doctor_id">
+                                    <span t-esc="p.doctor_id.name" />
+                                </t>
+                                
+                                <t t-else="">
+                                </t>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+
+</odoo>

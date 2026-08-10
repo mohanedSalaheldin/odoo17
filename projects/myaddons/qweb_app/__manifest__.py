@@ -1,33 +1,25 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "qweb_app",
-
-    'summary': "Short (1 phrase/line) summary of the module's purpose",
-
-    'description': """
+    "name": "qweb_app",
+    "summary": "Short (1 phrase/line) summary of the module's purpose",
+    "description": """
 Long description of module's purpose
     """,
-
-    'author': "My Company",
-    'website': "https://www.yourcompany.com",
-
-
-    'category': 'Uncategorized',
-    'version': '0.1',
-
+    "author": "My Company",
+    "website": "https://www.yourcompany.com",
+    "category": "Uncategorized",
+    "version": "0.1",
     # any module necessary for this one to work correctly
-    'depends': ['base'],
-
+    "depends": ["base", "mail"],
     # always loaded
-    'data': [
+    "data": [
         # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
-        'report/patient_report.xml'
+        "views/views.xml",
+        "views/templates.xml",
+        "report/patient_report.xml" "report/patient_report_new.xml",
     ],
     # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
+    "demo": [
+        "demo/demo.xml",
     ],
 }
-
