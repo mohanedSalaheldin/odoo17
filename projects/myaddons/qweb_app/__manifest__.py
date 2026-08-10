@@ -16,7 +16,8 @@ Long description of module's purpose
         # 'security/ir.model.access.csv',
         "views/views.xml",
         "views/templates.xml",
-        "report/patient_report.xml" "report/patient_report_new.xml",
+        "report/patient_report.xml",
+        "report/patient_report_new.xml",
     ],
     # only loaded in demonstration mode
     "demo": [

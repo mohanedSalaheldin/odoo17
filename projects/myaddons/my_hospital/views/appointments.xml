@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- 1. Tree View -->
     <record model="ir.ui.view" id="appointment_tree">
         <field name="name">the.appointments.tree</field>
         <field name="model">the.appointments</field>
@@ -15,6 +16,7 @@
             </tree>
         </field>
     </record>
+    <!-- 2. Form View -->
     <record id="appointment_form" model="ir.ui.view">
         <field name="name">the.appointments.form</field>
         <field name="model">the.appointments</field>
@@ -22,11 +24,11 @@
             <form string="Appointment Form">
                 <header>
                     <button string="confirm" name="action_confirm" 
-                type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                            type="object" class="oe_highlight" invisible="state != 'draft'"/>
                     <button string="done" name="action_done" type="object" 
-                class="oe_highlight" invisible="state != 'confirm'"/>
+                            class="oe_highlight" invisible="state != 'confirm'"/>
                     <button string="cancelled" name="action_cancel" type="object" 
-                invisible="state == 'done' or state == 'cancelled'"/>
+                            invisible="state == 'done' or state == 'cancelled'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
                 </header>
                 <sheet>
@@ -65,6 +67,29 @@
             </form>
         </field>
     </record>
+    <!-- 3. Pivot View (التحليل الجدول المحوري) -->
+    <record id="appointment_view_pivot" model="ir.ui.view">
+        <field name="name">the.appointments.pivot</field>
+        <field name="model">the.appointments</field>
+        <field name="arch" type="xml">
+            <pivot string="Appointments Analysis">
+                <field name="doctor_id" type="row"/>
+                <field name="state" type="col"/>
+            </pivot>
+        </field>
+    </record>
+    <!-- 4. Graph View (الرسم البياني) -->
+    <record id="appointment_view_graph" model="ir.ui.view">
+        <field name="name">the.appointments.graph</field>
+        <field name="model">the.appointments</field>
+        <field name="arch" type="xml">
+            <graph string="Appointments Analysis" type="bar">
+                <field name="doctor_id"/>
+                <field name="state"/>
+            </graph>
+        </field>
+    </record>
+    <!-- 5. Prescription Views -->
     <record id="the_prescription_view_form" model="ir.ui.view">
         <field name="name">the_prescription.view.form</field>
         <field name="model">the.prescription</field>
@@ -91,11 +116,12 @@
             </tree>
         </field>
     </record>
+    <!-- 6. Action (مُعدَّل ليشمل Pivot و Graph) -->
     <record id="action_appointments" model="ir.actions.act_window">
-        <field name="name">appointments</field>
+        <field name="name">Appointments</field>
         <field name="res_model">the.appointments</field>
-        <field name="view_mode">tree,form</field>
-        <field name="help" type="xml">
+        <field name="view_mode">tree,form,pivot,graph</field>
+        <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Make The First Appointment..
             </p>

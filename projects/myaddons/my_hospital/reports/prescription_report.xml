@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_appointment_prescription" model="ir.actions.report">
+        <field name="name">Medical Prescription</field>
+        <field name="model">the.appointments</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">my_hospital.report_prescription_template</field>
+        <field name="report_file">my_hospital.report_prescription_template</field>
+        <field name="binding_model_id" ref="model_the_appointments"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="report_prescription_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="text-center mb-4">
+                            <h2>Medical Prescription</h2>
+                            <h4>Appointment Ref:
+                                <span t-field="doc.name"/>
+                            </h4>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <strong>Patient Name:</strong>
+                                <span t-field="doc.patient_id.name"/>
+                                <br/>
+                                <strong>Age:</strong>
+                                <span t-field="doc.patient_age"/>
+                                <br/>
+                                <strong>Date:</strong>
+                                <span t-field="doc.app_date"/>
+                            </div>
+                            <div class="col-6 text-end">
+                                <strong>Doctor:</strong>
+                                <span t-field="doc.doctor_id.name"/>
+                            </div>
+                        </div>
+                        <hr/>
+                        <h4 class="mt-3">Prescribed Medicines</h4>
+                        <table class="table table-bordered mt-2">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Medicine</th>
+                                    <th>Active Material</th>
+                                    <th>Notes / Dosage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.prescription_ids" t-as="line">
+                                    <td>
+                                        <span t-field="line.medicine_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.medicine_id.effective_material"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.notes"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div t-if="doc.doctor_notes" class="mt-4">
+                            <strong>Doctor Instructions:</strong>
+                            <p t-field="doc.doctor_notes" class="border p-2 bg-light"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
